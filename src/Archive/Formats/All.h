@@ -23,4 +23,5 @@
 #include "WadArchiveHandler.h"
 #include "WadJArchiveHandler.h"
 #include "WolfArchiveHandler.h"
+#include "WrsArchiveHandler.h"
 #include "ZipArchiveHandler.h"

@@ -15,4 +15,5 @@ bool zipUnshrink(MemChunk& in, MemChunk& out, size_t maxsize);
 bool bzip2Decompress(const MemChunk& in, MemChunk& out, size_t maxsize = 0);
 bool bzip2Compress(const MemChunk& in, MemChunk& out);
 bool lzmaDecompress(const MemChunk& in, MemChunk& out, size_t size);
+bool lzssDecompress(const MemChunk& in, MemChunk& out);
 } // namespace slade::compression

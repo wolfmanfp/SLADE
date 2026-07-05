@@ -467,5 +467,21 @@
         "name": "PK7"
       }
     ]
+  },
+  "wrs": {
+    "name": "ACKNEX WRS",
+    "supports_dirs": false,
+    "names_extensions": true,
+    "max_name_length": 13,
+    "entry_format": "archive_wrs",
+    "prefer_uppercase": false,
+    "create": false,
+    "allow_duplicate_names": true,
+    "extensions": [
+      {
+        "extension": "wrs",
+        "name": "3D GameStudio/ACKNEX WRS"
+      }
+    ]
   }
 }

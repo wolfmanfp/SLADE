@@ -172,3 +172,9 @@ class LabDataFormat : public ArchiveDataFormat
 public:
 	LabDataFormat() : ArchiveDataFormat("archive_lab", ArchiveFormat::Lab) {}
 };
+
+class WrsDataFormat : public ArchiveDataFormat
+{
+public:
+	WrsDataFormat() : ArchiveDataFormat("archive_wrs", ArchiveFormat::Wrs) {}
+};

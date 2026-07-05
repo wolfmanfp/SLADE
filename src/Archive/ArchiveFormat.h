@@ -30,6 +30,7 @@ enum class ArchiveFormat
 	WadJ,
 	Wad2,
 	Wolf,
+	Wrs,
 	Zip,
 	Zip7, // 7zip
 

@@ -181,5 +181,12 @@
     "export_ext": "7z",
     "icon": "e_zip",
     "category": "Archives"
+  },
+  "wrs": {
+    "name": "3D GameStudio Archive",
+    "format": "archive_wrs",
+    "export_ext": "wrs",
+    "icon": "e_archive",
+    "category": "Archives"
   }
 }

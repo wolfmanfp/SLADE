@@ -1130,6 +1130,7 @@ unique_ptr<ArchiveFormatHandler> archive::formatHandler(ArchiveFormat format)
 	case ArchiveFormat::WadJ:     return std::make_unique<WadJArchiveHandler>();
 	case ArchiveFormat::Wad2:     return std::make_unique<Wad2ArchiveHandler>();
 	case ArchiveFormat::Wolf:     return std::make_unique<WolfArchiveHandler>();
+	case ArchiveFormat::Wrs:      return std::make_unique<WrsArchiveHandler>();
 	case ArchiveFormat::Zip:      return std::make_unique<ZipArchiveHandler>();
 	case ArchiveFormat::Zip7:     return std::make_unique<Zip7ArchiveHandler>();
 	default:                      break;

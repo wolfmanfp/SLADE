@@ -276,3 +276,63 @@ bool compression::lzmaDecompress(const MemChunk& in, MemChunk& out, size_t size)
 	delete[] cache;
 	return false;
 }
+
+// -----------------------------------------------------------------------------
+// Decompress the content of [in] as an LZSS stream to [out]
+// -----------------------------------------------------------------------------
+bool compression::lzssDecompress(const MemChunk &in, MemChunk &out)
+{
+	in.seek(0, SEEK_SET);
+	out.clear();
+
+	int threshold = 2;
+	int lengthBytes = 4;
+	int bufferSize = 4096;
+
+	uint8_t buffer[bufferSize];
+	int bufferPos = bufferSize - (1 << lengthBytes) - threshold;
+
+	for (int i = 0; i < bufferSize; i++)
+		buffer[i] = ' ';
+
+	while (in.currentPos() < in.size())
+	{
+		uint8_t flagByte;
+		in.read(&flagByte, 1);
+		flagByte = flagByte & 0xff;
+
+		for (int i = 0; i < 8 && in.currentPos() < in.size(); i++)
+		{
+			bool flag = (flagByte & (1 << i)) == 0;
+			if (flag)
+			{
+				uint8_t firstByte;
+				in.read(&firstByte, 1);
+				firstByte &= 0xff;
+				uint8_t secondByte;
+				in.read(&secondByte, 1);
+				secondByte &= 0xff;
+
+				int offset =  firstByte | (secondByte & 0xF0) << 4;
+				int length = (secondByte & 0x0f) + threshold + 1;
+
+				for (int j = 0; j < length; j++) {
+					uint8_t b = buffer[(offset + j) % bufferSize];
+					out.write(&b, 1);
+					buffer[bufferPos] = b;
+					bufferPos = (bufferPos + 1) % bufferSize;
+				}
+			}
+			else
+			{
+				uint8_t b;
+				in.read(&b, 1);
+				out.write(&b, 1);
+				buffer[bufferPos] = b;
+				bufferPos = (bufferPos + 1) % bufferSize;
+			}
+		}
+	}
+
+	return true;
+}

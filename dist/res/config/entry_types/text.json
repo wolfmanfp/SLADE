@@ -663,6 +663,16 @@
     "name": "OL Script",
     "match_ext": [ "msc" ]
   },
+  "acknex_map": {
+    "inherits": "text",
+    "name": "ACKNEX World Map",
+    "match_ext": [ "wmp" ]
+  },
+  "acknex_script": {
+    "inherits": "text",
+    "name": "ACKNEX WDL Script",
+    "match_ext": [ "wdl" ]
+  },
   "txt": {
     "inherits": "text",
     "name": "Text",
